@@ -2,9 +2,12 @@ NAME = libft.a
 # MODULES
 # ft_ctype
 # ft_string
+#	straddfmt añade con formato.
+#	KMP-algori
 # ft_stdlib
 # ft_stdio
 # ft_lst
+# other
 # Compilar entera o compilar modulos.
 SRC = ft_atoi.c\
 	ft_bzero.c\
