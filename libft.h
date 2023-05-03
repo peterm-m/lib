@@ -26,8 +26,23 @@ typedef struct s_list
 typedef struct s_dlist
 {
 	void			*content;
+	struct s_dlist	*prev;
 	struct s_dlist	*next;
 }	t_dlist;
+
+typedef struct s_queue
+{
+	size_t			size;
+	size_t			allocation;
+	void			*content;
+	struct s_queue	*head;
+	struct s_queue	*tail;
+} t_queue
+
+typedef struct s_stack
+{
+	
+} t_stack;
 
 int		ft_isprint(int c);
 int		ft_isdigit(int c);
@@ -66,14 +81,28 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-t_dlist	*ft_dlstnew(void *content);
-int		ft_dlstsize(t_dlist *dlst);
-void	ft_dlstadd_front(t_dlist **dlst, t_dlist *new);
-void	ft_dlstadd_back(t_dlist **lst, t_dlist *new);
-void	ft_dlstdelone(t_dlist *dlst, void (*del)(void*));
-void	ft_dlstclear(t_dlist **dlst, void (*del)(void*));
-void	ft_dlstiter(t_dlist *dlst, void (*f)(void *));
-t_dlist	*ft_dlstlast(t_dlist *dlst);
+//t_dlist	*ft_dlstnew(void *content);
+//int		ft_dlstsize(t_dlist *dlst);
+//void	ft_dlstadd_front(t_dlist **dlst, t_dlist *new);
+//void	ft_dlstadd_back(t_dlist **lst, t_dlist *new);
+//void	ft_dlstdelone(t_dlist *dlst, void (*del)(void*));
+//void	ft_dlstclear(t_dlist **dlst, void (*del)(void*));
+//void	ft_dlstiter(t_dlist *dlst, void (*f)(void *));
+//t_dlist	*ft_dlstlast(t_dlist *dlst);
+
+//t_queue	*ft_queuenew(void *content);
+//void		ft_queuein();
+//void		t_queuede()
+//t_queue	*ft_queue_front();
+//t_queue	*ft_queuerev();
+//t_queue	*ft_queueclean();
+//void		ft_queuedelete();
+//size_t	ft_queuesize();
+//int		ft_queueempty();
+
+//
+//
+//
 
 int		ft_atoi(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
