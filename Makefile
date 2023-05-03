@@ -3,7 +3,7 @@ NAME = libft.a
 # ft_ctype
 # ft_string
 #	straddfmt añade con formato.
-#	KMP-algori
+#	KMP algori
 # ft_stdlib
 # ft_stdio
 # ft_lst
