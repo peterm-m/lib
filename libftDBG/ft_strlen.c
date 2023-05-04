@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:40:36 by pedro             #+#    #+#             */
-/*   Updated: 2022/04/23 19:17:28 by pedromar         ###   ########.fr       */
+/*   Created: 2022/02/21 15:22:30 by pedromar          #+#    #+#             */
+/*   Updated: 2022/04/23 15:56:54 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_strlen(const char *str)
 {
-	t_list	*new_lst;
-	t_list	*elem;
+	int	i;
 
-	if (!lst)
-		return (NULL);
-	new_lst = 0;
-	while (lst)
+	if (VERBOSE_IN)
+		printf("ft_strlen\t%s\n", str);
+	i = 0;
+	while (str[i])
 	{
-		elem = ft_lstnew(f(lst->content));
-		if (!elem)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstaddb(&new_lst, elem);
-		lst = lst->next;
+		i++;
 	}
-	return (new_lst);
+	return (i);
 }
+
+/*
+** Computes the length of the string str.
+*/

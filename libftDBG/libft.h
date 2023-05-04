@@ -16,10 +16,19 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdbool.h>
 # include <stdio.h>
 
-# include "color.h"
+// # ifndef DEBUG
+// #  define DEBUG 0
+// # endif
+
+# ifndef VERBOSE_IN
+#  define VERBOSE_IN 0
+# endif
+
+// # ifndef VERBOSE_OUT
+// #  define VERBOSE_OUT 0
+// # endif
 
 typedef struct s_list
 {
@@ -76,6 +85,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+//void ft_lstprint(t_list *lst)
 
 //t_queue	*ft_queuenew(void *content);
 //t_list	*ft_queuepop();

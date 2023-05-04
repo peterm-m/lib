@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:40:36 by pedro             #+#    #+#             */
-/*   Updated: 2022/04/23 19:17:28 by pedromar         ###   ########.fr       */
+/*   Created: 2022/03/26 12:27:54 by pedromar          #+#    #+#             */
+/*   Updated: 2022/03/26 17:26:13 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_tolower(int c)
 {
-	t_list	*new_lst;
-	t_list	*elem;
-
-	if (!lst)
-		return (NULL);
-	new_lst = 0;
-	while (lst)
-	{
-		elem = ft_lstnew(f(lst->content));
-		if (!elem)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstaddb(&new_lst, elem);
-		lst = lst->next;
-	}
-	return (new_lst);
+	if (VERBOSE_IN)
+		printf("ft_tolower\t%c\n", (char )c);
+	if (c >= 'A' && c <= 'Z')
+		c = c + ' ';
+	return (c);
 }
+
+/*
+** Converts an upper-case letter to the corresponding lower-case letter.
+*/

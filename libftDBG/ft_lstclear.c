@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:40:36 by pedro             #+#    #+#             */
-/*   Updated: 2022/04/23 19:17:28 by pedromar         ###   ########.fr       */
+/*   Created: 2022/04/08 17:59:09 by pedro             #+#    #+#             */
+/*   Updated: 2022/04/23 19:17:46 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*new_lst;
-	t_list	*elem;
+	t_list	*aux;
 
-	if (!lst)
-		return (NULL);
-	new_lst = 0;
-	while (lst)
+	aux = *lst;
+	while (aux != NULL)
 	{
-		elem = ft_lstnew(f(lst->content));
-		if (!elem)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstaddb(&new_lst, elem);
-		lst = lst->next;
+		*lst = aux->next;
+		del(aux->content);
+		free(aux);
+		aux = *lst;
 	}
-	return (new_lst);
 }

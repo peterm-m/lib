@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:40:36 by pedro             #+#    #+#             */
-/*   Updated: 2022/04/23 19:17:28 by pedromar         ###   ########.fr       */
+/*   Created: 2022/03/26 12:27:17 by pedromar          #+#    #+#             */
+/*   Updated: 2022/04/23 19:04:01 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_toupper(int c)
 {
-	t_list	*new_lst;
-	t_list	*elem;
-
-	if (!lst)
-		return (NULL);
-	new_lst = 0;
-	while (lst)
-	{
-		elem = ft_lstnew(f(lst->content));
-		if (!elem)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstaddb(&new_lst, elem);
-		lst = lst->next;
-	}
-	return (new_lst);
+	if (VERBOSE_IN)
+		printf("ft_toupper\t%c\n", (char )c);
+	if (c >= 'a' && c <= 'z')
+		c = c - ' ';
+	return (c);
 }
+
+/*
+** Converts a lower-case letter to the corresponding upper-case letter.
+*/

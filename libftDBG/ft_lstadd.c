@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:40:36 by pedro             #+#    #+#             */
-/*   Updated: 2022/04/23 19:17:28 by pedromar         ###   ########.fr       */
+/*   Created: 2022/04/07 22:00:53 by pedro             #+#    #+#             */
+/*   Updated: 2022/04/23 19:12:27 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_lstaddf(t_list **lst, t_list *new)
 {
-	t_list	*new_lst;
-	t_list	*elem;
+	new->next = *lst;
+	*lst = new;
+}
 
-	if (!lst)
-		return (NULL);
-	new_lst = 0;
-	while (lst)
+void	ft_lstaddb(t_list **lst, t_list *new)
+{
+	t_list	*aux;
+
+	if (*lst == NULL)
 	{
-		elem = ft_lstnew(f(lst->content));
-		if (!elem)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstaddb(&new_lst, elem);
-		lst = lst->next;
+		*lst = new;
 	}
-	return (new_lst);
+	else
+	{
+		aux = *(lst);
+		while (aux->next != NULL)
+			aux = aux->next;
+	aux->next = new;
+	}
 }

@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:40:36 by pedro             #+#    #+#             */
-/*   Updated: 2022/04/23 19:17:28 by pedromar         ###   ########.fr       */
+/*   Created: 2022/04/04 20:54:10 by pedro             #+#    #+#             */
+/*   Updated: 2022/04/23 13:53:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_putchar_fd(char c, int fildes)
 {
-	t_list	*new_lst;
-	t_list	*elem;
-
-	if (!lst)
-		return (NULL);
-	new_lst = 0;
-	while (lst)
-	{
-		elem = ft_lstnew(f(lst->content));
-		if (!elem)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstaddb(&new_lst, elem);
-		lst = lst->next;
-	}
-	return (new_lst);
+	if (VERBOSE_IN)
+		printf("ft_putcahr_fd\t%c,%d\n", c, fildes);
+	write(fildes, &c, 1);
 }
+
+/*
+** Outputs the char c to the file descriptor filedes.
+*/

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:40:36 by pedro             #+#    #+#             */
-/*   Updated: 2022/04/23 19:17:28 by pedromar         ###   ########.fr       */
+/*   Created: 2022/04/07 21:00:59 by pedro             #+#    #+#             */
+/*   Updated: 2022/04/23 19:18:00 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstnew(void *content)
 {
-	t_list	*new_lst;
-	t_list	*elem;
+	t_list	*new_node;
 
-	if (!lst)
-		return (NULL);
-	new_lst = 0;
-	while (lst)
+	new_node = malloc(sizeof(t_list));
+	if (new_node != NULL)
 	{
-		elem = ft_lstnew(f(lst->content));
-		if (!elem)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstaddb(&new_lst, elem);
-		lst = lst->next;
+		new_node->content = content;
+		new_node->next = NULL;
 	}
-	return (new_lst);
+	return (new_node);
 }
