@@ -1,34 +1,18 @@
 NAME = libft.a
-# MODULES
-# ft_ctype
-# ft_string
-#	straddfmt añade con formato.
-#	KMP algori
-# ft_stdlib
-# ft_stdio
-# ft_lst
-# other
-# Compilar entera o compilar modulos.
-SRC = ft_atoi.c\
-	ft_bzero.c\
-	ft_calloc.c\
-	ft_isalnum.c\
+
+SRC = $(CTYPE) $(STRING) $(LIB) $(LIST) $(IO) $(OBJQUEUE) $(DLIST)
+OBJ = $(OBJCTYPE) $(OBJSTRING) $(OBJLIB) $(OBJLIST) $(OBJIO) $(OBJQUEUE) $(OBJDLIST)
+
+CTYPE =	ft_isalnum.c\
 	ft_isalpha.c\
 	ft_isascii.c\
 	ft_isdigit.c\
 	ft_isprint.c\
-	ft_itoa.c\
-	ft_memchr.c\
-	ft_memcmp.c\
-	ft_memcpy.c\
-	ft_memmove.c\
-	ft_memset.c\
-	ft_putchar_fd.c\
-	ft_putendl_fd.c\
-	ft_putnbr_fd.c\
-	ft_putstr_fd.c\
-	ft_split.c\
-	ft_strchr.c\
+	ft_tolower.c\
+	ft_toupper.c
+OBJCTYPE = $(CTYPE:%.c=%.o)
+
+STRING = ft_strchr.c\
 	ft_strdup.c\
 	ft_strjoin.c\
 	ft_strlcat.c\
@@ -40,14 +24,24 @@ SRC = ft_atoi.c\
 	ft_strrchr.c\
 	ft_strtrim.c\
 	ft_substr.c\
-	ft_tolower.c\
-	ft_toupper.c\
 	ft_striteri.c\
+	ft_memchr.c\
+	ft_memcmp.c\
+	ft_memcpy.c\
+	ft_memmove.c\
+	ft_memset.c
+OBJSTRING = $(STRING:%.c=%.o)
+
+LIB = ft_atoi.c\
+	ft_bzero.c\
+	ft_calloc.c\
+	ft_itoa.c\
+	ft_split.c\
 	get_next_line_utils.c\
 	get_next_line.c
+OBJLIB = $(LIB:%.c=%.o)
 
-BONUS= ft_lstadd_back.c\
-	ft_lstadd_front.c\
+LIST= ft_lstadd.c\
 	ft_lstclear.c\
 	ft_lstdelone.c\
 	ft_lstiter.c\
@@ -55,9 +49,24 @@ BONUS= ft_lstadd_back.c\
 	ft_lstmap.c\
 	ft_lstnew.c\
 	ft_lstsize.c
+OBJLIST = $(LIST:%.c=%.o)
 
-OBJ = $(SRC:%.c=%.o)
-OBJB = $(BONUS:%.c=%.o)
+DLIST =
+OBJDLIST = $(DLIST:%.c=%.o)
+
+QUEUE =
+OBJQUEUE = $(QUEUE:%.c=%.o)
+
+IO = ft_putchar_fd.c\
+	ft_putendl_fd.c\
+	ft_putnbr_fd.c\
+	ft_putstr_fd.c
+#	ft_printf.c\
+#	ft_fprintf.c\
+#	ft_sprintf.c\
+#	ft_vprintf.c\
+#	ft_dprintf.c
+OBJIO  = $(IO:%.c=%.o)
 
 CC      = gcc
 CFLAGSS = -Wall -Wextra -Werror
@@ -65,21 +74,19 @@ AR		= ar rcs
 RM		= rm -rf
 
 all: $(NAME)
+
 $(NAME): $(OBJ)
 	$(CC) -c $(SRC)
 	$(AR) $(NAME) $(OBJ)
 
-B = .
-bonus: $(B)
-$(B): $(OBJB) $(OBJ)
-	$(CC) -c $(BONUS) 
-	$(AR) $(NAME) $(OBJB)
+# debug: compilar fsanitize and -DDEBUG
+
 fclean:
-	@rm -f $(NAME) $(OBJ) $(OBJB)
+	@rm -f $(NAME) $(OBJ)
 
 clean:
-	@rm -f $(OBJ) $(OBJBONUS)
+	@rm -f $(OBJ)
 
 re: fclean all
 
-.PHONY: fclean all clean re bonus
+.PHONY: fclean all clean re
