@@ -77,6 +77,8 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+t_dlist	*ft_dlstnew(void *content);
+
 //t_queue	*ft_queuenew(void *content);
 //t_list	*ft_queuepop();
 //void	ft_queueen(t_queue *q, void *content);
