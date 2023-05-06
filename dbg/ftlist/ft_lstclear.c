@@ -16,6 +16,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*aux;
 
+	if (VERBOSE_IN)
+		printf("ft_lstclear \n");
 	aux = *lst;
 	while (aux != NULL)
 	{

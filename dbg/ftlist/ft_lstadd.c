@@ -14,6 +14,8 @@
 
 void	ft_lstaddf(t_list **lst, t_list *new)
 {
+	if (VERBOSE_IN)
+		printf("ft_lstaddf \n");
 	new->next = *lst;
 	*lst = new;
 }
@@ -22,6 +24,8 @@ void	ft_lstaddb(t_list **lst, t_list *new)
 {
 	t_list	*aux;
 
+	if (VERBOSE_IN)
+		printf("ft_lstaddb \n");
 	if (*lst == NULL)
 	{
 		*lst = new;

@@ -6,23 +6,21 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 15:22:30 by pedromar          #+#    #+#             */
-/*   Updated: 2022/04/23 15:56:54 by pedromar         ###   ########.fr       */
+/*   Updated: 2023/05/06 13:07:50 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dbg.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	if (VERBOSE_IN)
 		printf("ft_strlen\t%s\n", str);
 	i = 0;
 	while (str[i])
-	{
 		i++;
-	}
 	return (i);
 }
 

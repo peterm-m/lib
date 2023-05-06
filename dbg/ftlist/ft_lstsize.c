@@ -17,6 +17,8 @@ int	ft_lstsize(t_list *lst)
 	int		res;
 	t_list	*aux;
 
+	if (VERBOSE_IN)
+		printf("ft_lstsize\n");
 	res = 0;
 	aux = lst;
 	while (aux != NULL)

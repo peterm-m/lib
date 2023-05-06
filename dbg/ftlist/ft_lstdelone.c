@@ -14,6 +14,8 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
+	if (VERBOSE_IN)
+		printf("ft_lstdelone \n");
 	if (lst != NULL)
 	{
 		del(lst->content);
